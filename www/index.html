@@ -34,8 +34,17 @@
 
 
   <script>
+      //Inicia SDK In Loco e cria banner para mediação
       function initApp() {
           initInLocoMedia()
+          if (enabledAdMob) 
+            {
+                AdMob.createBanner({
+                    adId: admobid.banner,
+                    position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow: true
+                });
+            }
       }
 
       function initInLocoMedia() {
@@ -47,17 +56,28 @@
           InLocoMedia.initWithOptions({
               appId: "eeebc5f7b27738ee454c818f42109e81769eff0b1fbd8cf0490b099c23417e9f",
               appSecret: "d6fc2694097d9835236cef2702bae415e6ba8c8ae0ab9eb5fa137187d99825c2",
-              developmentEnvironment: false,
+              developmentEnvironment: true,
               logsEnabled: true
           });
       }
+        //Inicia SDK da AdMob
+        var enabledAdMob = true; 
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) 
+        { 
+            admobid = { 
+                banner: '', //id da AdMob vai aqui 
+                interstitial: 'ca-app-pub-xxx/yyy'
+            };
+        } 
+
 
       //comentei a função deviceready, que ja tava gerando erro no celular
       //para poder testar no navegador, 
-      // document.addEventListener('deviceready', initApp, false);
+      document.addEventListener('deviceready', initApp, false);
 
       //note que a variavel InLocoMedia é undefined
-      initApp();
+      //initApp();
   </script>
   </body>
 </html>
