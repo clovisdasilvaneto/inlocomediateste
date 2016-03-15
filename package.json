@@ -22,7 +22,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "inlocomedia-cordova-plugin"
+    "inlocomedia-cordova-plugin",
+    "cordova-plugin-admobpro"
   ],
   "cordovaPlatforms": [
     "android"
